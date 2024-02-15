@@ -53,3 +53,19 @@ export const DeleteCat = async (req,res)=>{
     return res.status(500).json({success:false,message:error})
    }
 }
+
+export const GetSingleData = async (req,res)=>{
+        try {
+            const {_id : categoryId} = req.query;
+            if(!categoryId)return res.status(404).json({success:false,message:"id not found"});
+    
+            const category = await categoryModel.findById(categoryId)
+    
+            if(category){
+                return res.status(200).json({success:true,message:"category found",category:category})
+            }
+            return res.status(404).json({ success: false, message: "category not found" })
+        } catch (error) {
+            return res.status(500).json({success:false,message:error})
+        }
+    }

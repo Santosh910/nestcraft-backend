@@ -1,12 +1,12 @@
 import multer from "multer";
-import path from 'path';
+
 import express from 'express'
 
 
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null,express.static("./public/temp"))
+      cb(null,"./public/temp")
     },
     filename: function (req, file, cb) {
       

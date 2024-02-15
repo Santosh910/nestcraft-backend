@@ -23,6 +23,8 @@ export const AddCategory = async(req,res)=>{
     }
 }
 
+
+
 export const GetAllCat = async(req,res)=>{
     try {
         const category = await categoryModel.find({});
@@ -39,11 +41,20 @@ export const DeleteCategory = async(req,res)=>{
     try {
         const {ids} = req.body;
         await categoryModel.deleteMany({_id:{$in:ids}})
-        
-
-       
 
         return res.status(200).json({success:true,message:"category deleted successfully"})
+    } catch (error) {
+        return res.status(500).json({success:false,message:error})
+    }
+}
+
+export const SearchCat = async (req,res)=>{
+    try {
+        const query = req.query.query;
+
+        const items = await categoryModel.find({$text : {$search : query}})
+
+        res.json(items)
     } catch (error) {
         return res.status(500).json({success:false,message:error})
     }
