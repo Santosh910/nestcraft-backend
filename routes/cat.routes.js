@@ -12,4 +12,18 @@ router.get("/get-all",GetAllCat)
 router.delete("/delete-item",DeleteCategory)
 router.get('/search',SearchCat)
 
+router.post('/upload',upload.single('image'),(req,res)=>{
+    if(!req.file){
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    const data = {
+        category: req.body.category,
+        description: req.body.description,
+        imageUrl: req.file.path
+      };
+
+      res.json(data);
+})
+
 export default router
