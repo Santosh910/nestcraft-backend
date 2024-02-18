@@ -19,7 +19,7 @@ app.use((req,res,next)=>{
 })
 
 app.get('/',(req,res)=>{
-    res.send("welcome to nestcraft")
+    res.send("welcome to backend")
 })
 
 
