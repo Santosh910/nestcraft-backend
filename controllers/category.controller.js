@@ -6,7 +6,7 @@ export const AddCategory = async(req,res)=>{
         const{category_name,description} = req.body;
         
 
-        const image = req.file.path;
+        const image = req.file.filename;
 
 
 

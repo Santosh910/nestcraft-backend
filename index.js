@@ -11,7 +11,7 @@ dotenv.config({path: './.env'});
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.static('public'))
+app.use("/public",express.static('./public'))
 
 app.use((req,res,next)=>{
     console.log("hi")
@@ -19,7 +19,7 @@ app.use((req,res,next)=>{
 })
 
 app.get('/',(req,res)=>{
-    res.send("welcome to backend")
+    res.send("welcome to nestcraft")
 })
 
 
